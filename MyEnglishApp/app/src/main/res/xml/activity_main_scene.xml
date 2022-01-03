@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <OnSwipe
+            motion:dragDirection="dragUp"
+            motion:dragScale="1"
+            motion:moveWhenScrollAtTop="true"
+            motion:onTouchUp="stop"
+            motion:touchAnchorId="@id/recyclerViewWord"
+            motion:touchAnchorSide="top"
+
+            />
+
+       <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/button"
+               motion:framePosition="43"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/search_ed"
+               motion:framePosition="0"
+               android:alpha="0.5" />
+           <KeyAttribute
+               motion:motionTarget="@+id/search_ed"
+               motion:framePosition="50"
+               android:alpha="0.5" />
+           <KeyAttribute
+               motion:motionTarget="@+id/search_ed"
+               motion:framePosition="75"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/textView5"
+               motion:framePosition="0"
+               android:alpha="1" />
+           <KeyAttribute
+               motion:motionTarget="@+id/textView5"
+               motion:framePosition="45"
+               android:alpha="0" />
+       </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            motion:layout_constraintVertical_bias="0.0"
+            android:layout_height="match_parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintHorizontal_bias="0.0"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:id="@+id/recyclerViewWord"
+            android:layout_marginTop="100dp" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/search_ed"
+            android:visibility="visible"
+            android:alpha="1" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/search_ed"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            motion:layout_constraintTop_toBottomOf="@+id/search_ed"
+            android:id="@+id/textView5"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/search_ed"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            motion:layout_constraintHorizontal_bias="1.0"
+            motion:layout_constraintTop_toBottomOf="@+id/search_ed" />
+    </ConstraintSet>
+</MotionScene>
