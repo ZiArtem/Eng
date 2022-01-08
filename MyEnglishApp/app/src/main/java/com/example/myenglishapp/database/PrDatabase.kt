@@ -1,19 +1,23 @@
-package com.example.myenglishapp
+package com.example.myenglishapp.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
+import com.example.myenglishapp.dao.ListWordsDao
+import com.example.myenglishapp.dao.WordDao
+import com.example.myenglishapp.entities.ListWords
+import com.example.myenglishapp.entities.Word
 
 @Database(
-    version = 1,
-    entities = [Word::class]
+    version = 3,
+    entities = [Word::class, ListWords::class]
 )
 
 //@TypeConverters(DataConverter::class)
 abstract class PrDatabase : RoomDatabase() {
     abstract fun wordDao(): WordDao
+    abstract fun listWordsDao(): ListWordsDao
 
     companion object {
         @Volatile

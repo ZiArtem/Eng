@@ -5,10 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.transform.RoundedCornersTransformation
 import com.example.myenglishapp.databinding.ItemBinding
+import com.example.myenglishapp.entities.Word
 import kotlinx.android.synthetic.main.item.view.*
-import java.text.DecimalFormat
 
 interface WordActionListener {
     fun deleteItem(word: Word) {
@@ -42,7 +41,8 @@ class WordAdapter(private val actionListener: WordActionListener) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemBinding.inflate(inflater, parent, false)
-        binding.root.setOnClickListener(this)
+//        binding.root.setOnClickListener(this)
+        binding.cross.setOnClickListener(this)
 
         return MyViewHolder(binding)
     }
@@ -54,8 +54,12 @@ class WordAdapter(private val actionListener: WordActionListener) :
     override fun onClick(v: View) {
         val word: Word = v.tag as Word
         when (v.id) {
-            else -> {
+            R.id.cross -> {
                 actionListener.deleteItem(word)
+            }
+
+            else -> {
+//                actionListener.deleteItem(word)
             }
         }
     }
@@ -70,6 +74,7 @@ class WordAdapter(private val actionListener: WordActionListener) :
         holder.itemView.word.text = currentItem.title.toString()
         holder.itemView.translation.text = currentItem.description.toString()
         holder.itemView.tag = currentItem
+        holder.itemView.cross.tag = currentItem
     }
 
     fun setData(words: List<Word>) {

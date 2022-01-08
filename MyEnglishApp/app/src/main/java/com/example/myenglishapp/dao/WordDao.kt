@@ -1,6 +1,7 @@
-package com.example.myenglishapp
+package com.example.myenglishapp.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.myenglishapp.entities.Word
 
 @Dao
 interface WordDao {
@@ -13,6 +14,6 @@ interface WordDao {
     @Update
     suspend fun updateWord(word: Word)
 
-    @Query("SELECT*FROM words_table ORDER BY id")
+    @Query("SELECT*FROM all_words_table ORDER BY id")
     fun readAllWord(): LiveData<List<Word>>
 }

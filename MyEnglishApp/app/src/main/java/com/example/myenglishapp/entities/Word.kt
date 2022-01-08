@@ -1,10 +1,10 @@
-package com.example.myenglishapp
+package com.example.myenglishapp.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "words_table"
+    tableName = "all_words_table"
 )
 
 data class Word(

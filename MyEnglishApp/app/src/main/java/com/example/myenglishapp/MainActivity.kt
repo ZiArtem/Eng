@@ -2,59 +2,45 @@ package com.example.myenglishapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
-import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SimpleItemAnimator
-import kotlinx.coroutines.launch
+import com.example.myenglishapp.databinding.NewActivityMainBinding
+import com.example.myenglishapp.entities.ListWords
+import com.example.myenglishapp.fragments.HomeFragment
+import com.example.myenglishapp.fragments.Fragment_2
+import com.example.myenglishapp.fragments.ListsFragment
+import com.example.myenglishapp.viewModel.PrViewModel
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: NewActivityMainBinding
     private lateinit var mUserViewModel: PrViewModel
-    private lateinit var button: Button
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: WordAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = NewActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         mUserViewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         ).get(PrViewModel::class.java)
 
-        adapter = WordAdapter(object : WordActionListener {
-            override fun deleteItem(word: Word) {
-                lifecycleScope.launch {
-                 mUserViewModel.deleteWord(word)
+
+        supportFragmentManager.beginTransaction().replace(binding.fragm1.id, HomeFragment.newInstance()).commit()
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    supportFragmentManager.beginTransaction().replace(binding.fragm1.id, HomeFragment.newInstance()).commit()
+                }
+                R.id.fav -> {
+                    supportFragmentManager.beginTransaction().replace(binding.fragm1.id, ListsFragment.newInstance()).commit()
+                }
+                R.id.fav1 -> {
+                    supportFragmentManager.beginTransaction().replace(binding.fragm1.id, Fragment_2.newInstance()).commit()
                 }
             }
-        })
-
-        recyclerView = findViewById(R.id.recyclerViewWord)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        (recyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
-        mUserViewModel.readAllWord().observe(this, { words -> adapter.setData(words) })
-
-
-        button = findViewById(R.id.button)
-        button.setOnClickListener {
-
-            lifecycleScope.launch {
-                for (i in 1..100)
-                    mUserViewModel.addWord(
-                        Word(
-                            0,
-                            "Word or phrase" + (0..10000).random(),
-                            "translation " + (0..100).random()
-                        )
-                    )
-            }
+            true
         }
+        mUserViewModel.addListWords(ListWords(0,"My new test 13/10 test 1","this is date"))
+
     }
 }

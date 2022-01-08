@@ -52,7 +52,7 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Word or Fraze "
+        android:text="New Word or phrase "
         android:textSize="16sp"
         android:textColor="@color/white"
         tools:layout_editor_absoluteX="82dp"
