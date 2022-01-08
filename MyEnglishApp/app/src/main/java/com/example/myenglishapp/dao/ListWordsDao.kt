@@ -16,6 +16,6 @@ interface ListWordsDao {
     @Update
     suspend fun updateListWords(listWords: ListWords)
 
-    @Query("SELECT*FROM wordlist_table ORDER BY id")
+    @Query("SELECT*FROM wordlist_table  ORDER BY id")
     fun readAllListWords(): LiveData<List<ListWords>>
 }

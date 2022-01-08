@@ -1,5 +1,6 @@
 package com.example.myenglishapp.repository
 
+import android.R
 import androidx.lifecycle.LiveData
 import com.example.myenglishapp.dao.ListWordsDao
 import com.example.myenglishapp.dao.WordDao
@@ -26,6 +27,10 @@ class Repository(
 
     fun readAllWord(): LiveData<List<Word>> {
         return wordDao.readAllWord()
+    }
+
+    fun getWordByIdList(id_list: Int): LiveData<List<Word>>{
+        return wordDao.getWordByIdList(id_list)
     }
 
     //ListWord Functions

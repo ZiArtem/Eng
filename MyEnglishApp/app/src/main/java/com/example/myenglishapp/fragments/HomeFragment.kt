@@ -52,7 +52,8 @@ class HomeFragment : Fragment() {
                         Word(
                             0,
                             "Word or phrase" + (0..10000).random(),
-                            "translation " + (0..100).random()
+                            "translation " + (0..100).random(),
+                            -1
                         )
                     )
             }

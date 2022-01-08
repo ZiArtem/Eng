@@ -13,6 +13,9 @@ import java.util.*
 interface ListWordActionListener {
     fun deleteItem(wordlist: ListWords) {
     }
+
+    fun onDetailItem(wordlist: ListWords) {
+    }
 }
 
 class ListWordsDiffCallback(private val oldList: List<ListWords>, private val  newList:  List<ListWords>) :
@@ -42,7 +45,10 @@ class ListWordAdapter(private val actionListener: ListWordActionListener) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemListBinding.inflate(inflater, parent, false)
-//        binding.root.setOnClickListener(this)
+        binding.root.setOnClickListener(this)
+        binding.titleList.setOnClickListener(this)
+        binding.date.setOnClickListener(this)
+        binding.numWordsOnLists.setOnClickListener(this)
         binding.crossList.setOnClickListener(this)
 
         return MyViewHolder(binding)
@@ -60,7 +66,7 @@ class ListWordAdapter(private val actionListener: ListWordActionListener) :
             }
 
             else -> {
-//                actionListener.deleteItem(word)
+                actionListener.onDetailItem(wordlist)
             }
         }
     }
@@ -75,8 +81,12 @@ class ListWordAdapter(private val actionListener: ListWordActionListener) :
         holder.itemView.titleList.text = currentItem.title.toString()
         holder.itemView.date.text = currentItem.date.toString()
         holder.itemView.numWordsOnLists.text = 1.toString()
+
         holder.itemView.tag = currentItem
         holder.itemView.crossList.tag = currentItem
+        holder.itemView.numWordsOnLists.tag = currentItem
+        holder.itemView.date.tag = currentItem
+        holder.itemView.titleList.tag = currentItem
     }
 
     fun setData(wordlist_: List<ListWords>) {

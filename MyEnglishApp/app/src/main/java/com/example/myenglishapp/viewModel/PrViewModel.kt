@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 
 class PrViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: Repository
+    var currentItem: Int = -1
 
     init {
         val wordDao1 = PrDatabase.getDatabase(application).wordDao()
@@ -49,6 +50,9 @@ class PrViewModel(application: Application) : AndroidViewModel(application) {
         return repository.readAllWord()
     }
 
+    fun getWordByIdList(id_list: Int): LiveData<List<Word>> {
+        return repository.getWordByIdList(id_list)
+    }
     //ListWord Functions
 
     fun addListWords(listWords: ListWords) {

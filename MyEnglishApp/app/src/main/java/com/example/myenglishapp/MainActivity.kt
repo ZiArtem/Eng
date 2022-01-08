@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.myenglishapp.databinding.NewActivityMainBinding
 import com.example.myenglishapp.entities.ListWords
+import com.example.myenglishapp.entities.Word
 import com.example.myenglishapp.fragments.HomeFragment
 import com.example.myenglishapp.fragments.Fragment_2
 import com.example.myenglishapp.fragments.ListsFragment
@@ -40,7 +41,12 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        mUserViewModel.addListWords(ListWords(0,"My new test 13/10 test 1","this is date"))
 
+        mUserViewModel.addListWords(ListWords(101,"тест 101 ","8 января"))
+        mUserViewModel.addListWords(ListWords(0,"тест 8 ","8 января"))
+        mUserViewModel.addWord(Word(0,"almost", "почти",101))
+        mUserViewModel.addWord(Word(0,"aware", "осведомленный",101))
+        mUserViewModel.addWord(Word(0,"certain", "определенный",101))
+        mUserViewModel.addWord(Word(0,"complain", "жаловаться",101))
     }
 }

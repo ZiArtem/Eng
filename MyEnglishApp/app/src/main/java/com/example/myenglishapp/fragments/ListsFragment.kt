@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.myenglishapp.ListWordActionListener
 import com.example.myenglishapp.ListWordAdapter
+import com.example.myenglishapp.MainActivity
+import com.example.myenglishapp.R
 import com.example.myenglishapp.databinding.Fragment3Binding
 import com.example.myenglishapp.entities.ListWords
 import com.example.myenglishapp.entities.Word
@@ -38,14 +41,22 @@ class ListsFragment : Fragment() {
                     mUserViewModel.deleteListWords(wordlist)
                 }
             }
+
+            override fun onDetailItem(wordlist: ListWords) {
+                mUserViewModel.currentItem = wordlist.id
+                getFragmentManager()?.beginTransaction()?.replace(R.id.fragm_1,Fragment4.newInstance())
+                    ?.commit()
+            }
         })
 
-        binding.recyclerViewLists.adapter= adapter
+        binding.recyclerViewLists.adapter = adapter
 
         binding.recyclerViewLists.layoutManager = LinearLayoutManager(binding.root.context)
-        (binding.recyclerViewLists.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+        (binding.recyclerViewLists.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
+            false
 
-        mUserViewModel.readAllListWords().observe(activity as LifecycleOwner, { wordlist -> adapter.setData( wordlist) })
+        mUserViewModel.readAllListWords()
+            .observe(activity as LifecycleOwner, { wordlist -> adapter.setData(wordlist) })
     }
 
     companion object {
