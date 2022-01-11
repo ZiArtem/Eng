@@ -78,8 +78,8 @@ class ListWordAdapter(private val actionListener: ListWordActionListener) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = wordlist[position]
 
-        holder.itemView.titleList.text = currentItem.title.toString()
-        holder.itemView.date.text = currentItem.date.toString()
+        holder.itemView.titleList.text = currentItem.title
+        holder.itemView.date.text = currentItem.date
         holder.itemView.numWordsOnLists.text = 1.toString()
 
         holder.itemView.tag = currentItem

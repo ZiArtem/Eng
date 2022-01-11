@@ -48,5 +48,13 @@ class MainActivity : AppCompatActivity() {
         mUserViewModel.addWord(Word(0,"aware", "осведомленный",101))
         mUserViewModel.addWord(Word(0,"certain", "определенный",101))
         mUserViewModel.addWord(Word(0,"complain", "жаловаться",101))
+        mUserViewModel.addWord(Word(0,"demand", "требовать",101))
+        mUserViewModel.addWord(Word(0,"matter", "иметь значение",101))
+        mUserViewModel.addWord(Word(0,"terrible", "ужасный, страшный",101))
+        mUserViewModel.addWord(Word(0,"useless", "бесполезный",101))
+        mUserViewModel.addWord(Word(0,"annoying", "раздражающий",101))
+        mUserViewModel.addWord(Word(0,"believe", "верить полагать",101))
+        mUserViewModel.addWord(Word(0,"especially", "особенно",101))
+        mUserViewModel.addWord(Word(0,"reliable", "надежный",101))
     }
 }

@@ -42,7 +42,7 @@ class WordAdapter(private val actionListener: WordActionListener) :
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemBinding.inflate(inflater, parent, false)
 //        binding.root.setOnClickListener(this)
-        binding.cross.setOnClickListener(this)
+//        binding.cross.setOnClickListener(this)
 
         return MyViewHolder(binding)
     }
@@ -54,9 +54,9 @@ class WordAdapter(private val actionListener: WordActionListener) :
     override fun onClick(v: View) {
         val word: Word = v.tag as Word
         when (v.id) {
-            R.id.cross -> {
-                actionListener.deleteItem(word)
-            }
+//            R.id.cross -> {
+//                actionListener.deleteItem(word)
+//            }
 
             else -> {
 //                actionListener.deleteItem(word)
@@ -71,10 +71,10 @@ class WordAdapter(private val actionListener: WordActionListener) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = wordList[position]
 
-        holder.itemView.word.text = currentItem.title.toString()
-        holder.itemView.translation.text = currentItem.description.toString()
+        holder.itemView.word.text = currentItem.title
+        holder.itemView.translation.text = currentItem.description
         holder.itemView.tag = currentItem
-        holder.itemView.cross.tag = currentItem
+//        holder.itemView.cross.tag = currentItem
     }
 
     fun setData(words: List<Word>) {

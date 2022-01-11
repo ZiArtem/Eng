@@ -50,8 +50,16 @@ class PrViewModel(application: Application) : AndroidViewModel(application) {
         return repository.readAllWord()
     }
 
+    fun readAllWord1(): List<Word> {
+        return repository.readAllWord1()
+    }
+
     fun getWordByIdList(id_list: Int): LiveData<List<Word>> {
         return repository.getWordByIdList(id_list)
+    }
+
+    fun getWordByIdList1(id_list: Int): List<Word> {
+        return repository.getWordByIdList1(id_list)
     }
     //ListWord Functions
 

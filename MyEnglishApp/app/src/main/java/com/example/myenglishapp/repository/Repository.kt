@@ -29,8 +29,16 @@ class Repository(
         return wordDao.readAllWord()
     }
 
+    fun readAllWord1(): List<Word> {
+        return wordDao.readAllWord1()
+    }
+
     fun getWordByIdList(id_list: Int): LiveData<List<Word>>{
         return wordDao.getWordByIdList(id_list)
+    }
+
+    fun getWordByIdList1(id_list: Int): List<Word>{
+        return wordDao.getWordByIdList1(id_list)
     }
 
     //ListWord Functions

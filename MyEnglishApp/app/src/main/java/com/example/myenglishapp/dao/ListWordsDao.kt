@@ -18,4 +18,5 @@ interface ListWordsDao {
 
     @Query("SELECT*FROM wordlist_table  ORDER BY id")
     fun readAllListWords(): LiveData<List<ListWords>>
+
 }

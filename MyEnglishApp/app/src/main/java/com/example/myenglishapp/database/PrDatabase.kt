@@ -10,7 +10,7 @@ import com.example.myenglishapp.entities.ListWords
 import com.example.myenglishapp.entities.Word
 
 @Database(
-    version = 4,
+    version = 5,
     entities = [Word::class, ListWords::class]
 )
 

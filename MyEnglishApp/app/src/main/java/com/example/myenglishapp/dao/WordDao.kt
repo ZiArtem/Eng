@@ -18,7 +18,14 @@ interface WordDao {
     @Query("SELECT*FROM all_words_table WHERE id_list = -1 ORDER BY id")
     fun readAllWord(): LiveData<List<Word>>
 
+    @Query("SELECT*FROM all_words_table WHERE id_list = -1 ORDER BY id")
+    fun readAllWord1(): List<Word>
+
     @Query("SELECT*FROM all_words_table WHERE id_list = (:id_list) ORDER BY id")
     fun getWordByIdList(id_list: Int): LiveData<List<Word>>
+
+    @Query("SELECT*FROM all_words_table WHERE id_list = (:id_list) ORDER BY id")
+    fun getWordByIdList1(id_list: Int): List<Word>
+
 
 }
